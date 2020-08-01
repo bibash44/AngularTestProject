@@ -13,8 +13,7 @@ const headerOptions = {
 @Injectable()
 export class TeacherService {
 
-  private URL = environment.localjsonurl;
-  // private URL = environment.onlinejsonurl;
+  private URL = environment.jsonurl;
 
   private TeacherUrl = this.URL + '/Teacher';
   private AssessentUrl = this.URL + '/Assessment';

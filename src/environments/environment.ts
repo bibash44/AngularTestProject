@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  localjsonurl:"http://localhost:3000",
-  onlinejsonurl: "https://my-json-server.typicode.com/bibash44/jsonapi"
+  // jsonurl: 'http://localhost:3000',
+  jsonurl: 'https://my-json-server.typicode.com/bibash44/jsonapi'
 };
 
 /*

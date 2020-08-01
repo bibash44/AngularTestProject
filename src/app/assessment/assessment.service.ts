@@ -12,8 +12,7 @@ const headerOptions = {
 @Injectable()
 export class AssessmentService {
 
-  private URL = environment.localjsonurl;
-  // private URL = environment.onlinejsonurl;
+  private URL = environment.jsonurl;
   private AssessentUrl = this.URL + '/Assessment';
 
   constructor(private http: HttpClient) { }

@@ -1,0 +1,169 @@
+<div class="tableContainer mt-md-5">
+
+  <mat-form-field appearance="outline">
+    <mat-label> Enter your id </mat-label>
+    <mat-icon matSuffix>perm_identity</mat-icon>
+    <input matInput placeholder="Enter your id" type="number" [formControl]="inputteacherId">
+  </mat-form-field>
+
+  <span class="alert alert-info float-left"> Teacher data table</span>
+
+  <button mat-button color="primary" class="btnGetTeacherData float-right" (click)="getATeacher()">Get your data
+  </button>
+
+  <table class="w-100 m-auto teacher-table">
+    <tr>
+      <th *ngFor="let column of teacherTableColumn"> {{column}} </th>
+    </tr>
+
+    <tr>
+      <td> {{teacherid}} </td>
+      <td> {{teachername}} </td>
+      <td> {{teacherclass}} </td>
+    </tr>
+
+  </table>
+
+
+  <!-- Assessment data table -->
+  <div class="tableContainer mt-md-5">
+    <span class="alert alert-info float-left"> Assessment table</span>
+    <button mat-button color="primary" class="btnAddAssessment float-right" (click)="openAddUpdateAssessmentForm()">Add
+      assessment</button>
+
+    <input (keyup)="applyFilter($event)" placeholder="Search assessment list" #input class="SearchFilterInput mb-3">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z13">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="student">
+        <th mat-header-cell *matHeaderCellDef> Student id </th>
+        <td mat-cell *matCellDef="let element"> {{element.student}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef> Score </th>
+        <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Start date </th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="submittedDate">
+        <th mat-header-cell *matHeaderCellDef> Submitted date </th>
+        <td mat-cell *matCellDef="let element"> {{element.submittedDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="verified">
+        <th mat-header-cell *matHeaderCellDef> verified </th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.verified" class="verifiedBatch"> verified </span>
+          <span *ngIf="element.submittedDate==''" class="notVerifiedNoSubmissionDate"> No submission date </span>
+          <button *ngIf="!element.verified && element.submittedDate!=''" mat-button class="btn btn-primary"
+            (click)="verifyAssessment(element)">Verfify</button>
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element" (click)=openEditAssessmentForm(element)>
+          <button type="button" mat-icon-button>
+            <mat-icon class="editIcon">edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100, 200]" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+</div>
+
+
+<!-- Dialouge for adding a new assessment -->
+<ng-template #addAssessmentDialouge>
+  <h2 matDialogTitle> {{formHeadingText}} </h2>
+
+  <form [formGroup]="addUpdateAssessmentFormGroup" class="p-md-5" (submit)="addOrUpdateAssessment()">
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Select student </mat-label>
+        <mat-select formControlName="student">
+          <mat-option *ngFor="let studentData of storeStudentData" [value]="studentData.id">
+            {{studentData.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error
+        *ngIf="addUpdateAssessmentFormGroup.controls.student.touched && addUpdateAssessmentFormGroup.controls.student.hasError('pattern')">
+        Enter valid id</mat-error>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label> Score </mat-label>
+        <mat-icon matSuffix>score</mat-icon>
+        <input matInput placeholder="Enter score" type="number" formControlName="score">
+      </mat-form-field>
+      <mat-error
+        *ngIf="addUpdateAssessmentFormGroup.controls.score.touched && addUpdateAssessmentFormGroup.controls.score.hasError('required')">
+        Required *</mat-error>
+      <mat-error
+        *ngIf="addUpdateAssessmentFormGroup.controls.score.touched && addUpdateAssessmentFormGroup.controls.score.hasError('pattern')">
+        Enter valid score</mat-error>
+    </p>
+
+
+    <p>
+      <mat-form-field>
+        <mat-label> Start date </mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="startDate" [(ngModel)]="datepicker">
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+      </mat-form-field>
+      <mat-error
+        *ngIf="addUpdateAssessmentFormGroup.controls.startDate.touched && addUpdateAssessmentFormGroup.controls.startDate.hasError('required')">
+        Required *
+      </mat-error>
+
+      <mat-error
+        *ngIf="addUpdateAssessmentFormGroup.controls.startDate.touched && addUpdateAssessmentFormGroup.controls.startDate.hasError('pattern')">
+        Enter valid date
+      </mat-error>
+    </p>
+
+    <p>
+
+
+    </p>
+
+    <p>
+      <mat-label>Verified</mat-label>
+      <mat-slide-toggle formControlName="verified" (change)=changeVerifyValue() class="float-right"> </mat-slide-toggle>
+    </p>
+
+
+    <button type="submit" [disabled]="!addUpdateAssessmentFormGroup.valid" mat-button
+      class="btnAddAssessment w-100 mt-3">
+      {{formSubmitButtonText}} </button>
+  </form>
+
+</ng-template>

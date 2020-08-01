@@ -1,0 +1,114 @@
+<div class="tableContainer mt-md-5">
+  <span class="alert alert-info float-left"> Students table</span>
+  <button mat-button color="primary" class="btnAddStudent float-right" (click)="openAddStudentDialouge()">Add
+    student</button>
+
+  <input (keyup)="applyFilter($event)" placeholder="Search student list" #input class="SearchFilterInput mb-3">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z13">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef> Score </th>
+      <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element">
+        <button type="button" mat-icon-button (click)="openEdiStudentForm(element)">
+          <mat-icon class="editIcon">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button type="button" mat-icon-button id="delete" (click)="openStudentDeleteDialouge(element.id)">
+          <mat-icon class="deletIcon">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100, 200]" showFirstLastButtons></mat-paginator>
+</div>
+
+<!-- End of datatable -->
+
+
+<!--  diagloge for adding and updating student -->
+<ng-template #addStudentFormDialouge>
+  <h2 matDialogTitle> {{formHeading}} </h2>
+  <!-- <p matDialogContent> </p> -->
+
+  <!-- Form for adding student -->
+  <a mat-button mat-dialog-close class="btnCancelAddStudent">
+
+  </a>
+  <form [formGroup]="addUpdateStudentFormGroup" (submit)="addOrUpdateStudent()" class="p-md-5">
+
+
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label> Name </mat-label>
+        <mat-icon matSuffix>person_pin</mat-icon>
+        <input matInput placeholder="Enter name" type="text" formControlName="name">
+      </mat-form-field>
+      <mat-error
+        *ngIf="addUpdateStudentFormGroup.controls.name.touched && addUpdateStudentFormGroup.controls.name.hasError('required')">
+        Required *</mat-error>
+      <mat-error
+        *ngIf="addUpdateStudentFormGroup.controls.name.touched && addUpdateStudentFormGroup.controls.name.hasError('pattern')">
+        Enter
+        valid name</mat-error>
+    </p>
+
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label> Score </mat-label>
+        <mat-icon matSuffix>score</mat-icon>
+        <input matInput placeholder="Enter score" type="number" formControlName="score">
+      </mat-form-field>
+      <mat-error
+        *ngIf="addUpdateStudentFormGroup.controls.score.touched && addUpdateStudentFormGroup.controls.score.hasError('pattern')">
+        Enter
+        valid name</mat-error>
+    </p>
+
+
+    <button type="submit" [disabled]="!addUpdateStudentFormGroup.valid" mat-button
+      class="btnAddStudent w-100"> {{addOrUpdateStudentbtnText}} </button>
+  </form>
+  <!-- End of form for adding student -->
+</ng-template>
+<!-- End of dialouge for adding and updating student -->
+
+
+
+<!-- Confirm delete or not student dialouge -->
+<ng-template #deleteStudentFormDialouge>
+  <h2 matDialogTitle>Are you sure to delete ? </h2>
+  <button mat-button mat-dialog-close class="float-left">Cancel</button>
+  <button mat-button (click)="deleteStudent()" class="btn btn-danger float-right">Delete</button>
+</ng-template>
+
+<!-- End of delete or not student dialouge -->

@@ -1,0 +1,154 @@
+{
+  "Teacher": [
+    {
+      "id": 1,
+      "name": "Niman",
+      "class": "DDD"
+    },
+    {
+      "id": 2,
+      "name": "Manoj",
+      "class": "IOT"
+    },
+    {
+      "id": 3,
+      "name": "Haru",
+      "class": "Internet of things"
+    },
+    {
+      "id": 5,
+      "name": "Binita",
+      "class": "Social"
+    },
+    {
+      "id": 6,
+      "name": "Niraj",
+      "class": "Python"
+    }
+  ],
+  "Student": [
+    {
+      "id": 1,
+      "name": "Nitesh",
+      "score": 0
+    },
+    {
+      "id": 2,
+      "name": "Bishal",
+      "score": 115
+    },
+    {
+      "id": 3,
+      "name": "Bibash",
+      "score": 0
+    },
+    {
+      "id": 4,
+      "name": "Suman",
+      "score": 100
+    },
+    {
+      "id": 12,
+      "name": "Hanuman",
+      "score": 0
+    },
+    {
+      "name": "Madan",
+      "score": 121,
+      "id": 13
+    },
+    {
+      "id": 14,
+      "name": "Haribasnha",
+      "score": 121
+    },
+    {
+      "id": 15,
+      "name": "Binita",
+      "score": null
+    }
+  ],
+  "Assessment": [
+    {
+      "id": 1,
+      "student": 1,
+      "score": 0,
+      "startDate": "7/31/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": false
+    },
+    {
+      "id": 2,
+      "student": 2,
+      "score": 0,
+      "startDate": "8/2/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": false
+    },
+    {
+      "id": 3,
+      "student": 3,
+      "score": 0,
+      "startDate": "8/1/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": false
+    },
+    {
+      "id": 4,
+      "student": 4,
+      "score": 0,
+      "startDate": "8/10/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": true
+    },
+    {
+      "id": 5,
+      "student": 4,
+      "score": 100,
+      "startDate": "7/31/2020",
+      "submittedDate": "7/31/2020",
+      "verified": true,
+      "excluded": false
+    },
+    {
+      "id": 6,
+      "student": 3,
+      "score": 0,
+      "startDate": "8/13/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": true
+    },
+    {
+      "id": 7,
+      "student": 4,
+      "score": 0,
+      "startDate": "8/5/2020",
+      "submittedDate": "8/1/2020",
+      "verified": false,
+      "excluded": false
+    },
+    {
+      "id": 8,
+      "student": 3,
+      "score": 0,
+      "startDate": "8/4/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": false
+    },
+    {
+      "id": 9,
+      "student": 4,
+      "score": 0,
+      "startDate": "8/2/2020",
+      "submittedDate": "",
+      "verified": false,
+      "excluded": false
+    }
+  ]
+}

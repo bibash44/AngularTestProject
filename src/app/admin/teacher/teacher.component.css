@@ -1,0 +1,47 @@
+/* Structure */
+
+table {
+  width: 100%;
+  padding-right: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.deletIcon {
+  color: red;
+}
+
+.editIcon {
+  color: green;
+}
+
+.tableContainer {
+  margin: auto;
+  width: 75%;
+}
+
+.SearchFilterInput {
+  border: none;
+  border-radius: 5px;
+  background: rgba(182, 182, 182, 0.5);
+  outline: none;
+  padding: 10px;
+  width: 100%;
+}
+
+.btnAddTeacher {
+  float: left;
+  color: white;
+  background-color: rgb(63, 81, 181);
+}
+
+.btnCancelAddTeacher {
+  float: right;
+  color: white;
+  background-color: red;
+}
+
+

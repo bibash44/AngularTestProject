@@ -1,0 +1,79 @@
+/* Structure */
+
+table {
+  width: 100%;
+  padding-right: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.deletIcon {
+  color: red;
+}
+
+.editIcon {
+  color: green;
+}
+
+.tableContainer {
+  margin: auto;
+  width: 90%;
+}
+
+.SearchFilterInput {
+  border: none;
+  border-radius: 5px;
+  background: rgba(182, 182, 182, 0.5);
+  outline: none;
+  padding: 10px;
+  width: 100%;
+}
+
+.btnAddAssessment, .btnGetTeacherData {
+  float: left;
+  color: white;
+  background-color: rgb(63, 81, 181);
+}
+
+.btnCancelAddTeacher {
+  float: right;
+  color: white;
+  background-color: red;
+}
+
+
+
+.teacher-table tr{
+  border-radius: 5px;
+}
+.teacher-table th{
+  background-color: rgb(161, 161, 161, 0.5);
+  table-layout: fixed;
+  padding: 5px;
+}
+
+.teacher-table td{
+  background-color: rgba(202, 202, 202, 0.5);
+  table-layout: fixed;
+  padding: 5px;
+}
+
+.verifiedBatch{
+  background-color: green;
+  font-size: 12px;
+  color: white;
+  border-radius: 5px;
+  padding: 3px;
+
+}
+
+.notVerifiedNoSubmissionDate{
+  background-color: rgb(231, 127, 29);
+  font-size: 12px;
+  color: white;
+  border-radius: 5px;
+  padding: 3px;
+}

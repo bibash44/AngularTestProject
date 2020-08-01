@@ -1,3 +1,4 @@
+
 import { Assessment } from './../../assets/models/assessment';
 import { Student } from './../../assets/models/student';
 import { Teacher } from './../../assets/models/teacher';
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+
 const headerOptions = {
   headers: new HttpHeaders({ 'content-type': 'application/json' })
 };
@@ -13,7 +15,8 @@ const headerOptions = {
 @Injectable()
 export class TeacherService {
 
-  private URL = environment.jsonurl;
+   private URL= 'http://localhost:3000';
+  //  private URL = 'https://my-json-server.typicode.com/bibash44/jsonapi';
 
   private TeacherUrl = this.URL + '/Teacher';
   private AssessentUrl = this.URL + '/Assessment';

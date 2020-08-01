@@ -12,7 +12,8 @@ const headerOptions = {
 @Injectable()
 export class StudentService {
 
-  private URL = environment.jsonurl;
+ private URL= 'http://localhost:3000';
+  // private URL = 'https://my-json-server.typicode.com/bibash44/jsonapi';
 
   private AssessentUrl = this.URL + '/Assessment';
   private StudentUrl = this.URL + '/Student';

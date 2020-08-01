@@ -1,3 +1,4 @@
+
 import { Teacher } from './../../../assets/models/teacher';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,8 @@ const headerOptions = {
 @Injectable()
 export class TeacherService {
 
-  private URL = environment.jsonurl;
+ private URL= 'http://localhost:3000';
+//  private URL = 'https://my-json-server.typicode.com/bibash44/jsonapi';
   private AdminTeacherUrl = this.URL + '/Teacher';
   constructor(private http: HttpClient) { }
 

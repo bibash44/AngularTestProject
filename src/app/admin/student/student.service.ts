@@ -1,8 +1,10 @@
+
 import { Student } from './../../../assets/models/student';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { config } from 'process';
 
 const headerOptions = {
   headers: new HttpHeaders({ 'content-type': 'application/json' })
@@ -11,7 +13,8 @@ const headerOptions = {
 @Injectable()
 export class StudentService {
 
-  private URL = environment.jsonurl;
+  private URL= 'http://localhost:3000';
+  // private URL = 'https://my-json-server.typicode.com/bibash44/jsonapi';
   private AdminStudentUrl = this.URL + '/Student';
   constructor(private http: HttpClient) { }
 

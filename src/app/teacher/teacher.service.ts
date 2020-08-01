@@ -4,6 +4,7 @@ import { Teacher } from './../../assets/models/teacher';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 const headerOptions = {
   headers: new HttpHeaders({ 'content-type': 'application/json' })
@@ -12,10 +13,12 @@ const headerOptions = {
 @Injectable()
 export class TeacherService {
 
+  private URL = environment.localjsonurl;
+  // private URL = environment.onlinejsonurl;
 
-  private TeacherUrl = 'http://localhost:3000/Teacher';
-  private AssessentUrl = 'http://localhost:3000/Assessment';
-  private StudentUrl = 'http://localhost:3000/Student';
+  private TeacherUrl = this.URL + '/Teacher';
+  private AssessentUrl = this.URL + '/Assessment';
+  private StudentUrl = this.URL + '/Student';
 
   constructor(private http: HttpClient) { }
 

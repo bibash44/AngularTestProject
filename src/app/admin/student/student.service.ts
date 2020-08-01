@@ -2,6 +2,7 @@ import { Student } from './../../../assets/models/student';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 const headerOptions = {
   headers: new HttpHeaders({ 'content-type': 'application/json' })
@@ -10,8 +11,9 @@ const headerOptions = {
 @Injectable()
 export class StudentService {
 
-  // tslint:disable-next-line: no-inferrable-types
-  private AdminStudentUrl = 'http://localhost:3000/Student';
+  private URL = environment.localjsonurl;
+  // private URL = environment.onlinejsonurl;
+  private AdminStudentUrl = this.URL + '/Student';
   constructor(private http: HttpClient) { }
 
 
